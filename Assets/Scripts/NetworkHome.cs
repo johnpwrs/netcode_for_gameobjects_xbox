@@ -10,9 +10,10 @@ public class NetworkHome : MonoBehaviour
     private NetworkManager netManager;
     private bool isInMatch = false;
 
-    private InputActionMap actionMap;
-
     public InputActionAsset inputActionAsset;
+    public string hostIp;
+
+    private InputActionMap actionMap;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +58,7 @@ public class NetworkHome : MonoBehaviour
     private void startClient()
     {
         NetworkManager.Singleton.GetComponent<UnityTransport>().SetConnectionData(
-                "192.168.1.119",  // The IP address is a string
+                hostIp,  // The IP address is a string
                 (ushort)7777// The port number is an unsigned short
             );
         netManager.StartClient();
